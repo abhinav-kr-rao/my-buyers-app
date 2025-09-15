@@ -61,7 +61,7 @@ export default function Home() {
             Welcome to <span className="text-blue-600">BuilderAPP</span>
           </h1>
 
-        </div>
+       
 
             {isLoggedIn && (
             <div className="mt-8 bg-white p-8 rounded-2xl shadow-xl">
@@ -86,6 +86,7 @@ export default function Home() {
               </div>
             </div>
           )}
+           </div>
       </main>
 
 
