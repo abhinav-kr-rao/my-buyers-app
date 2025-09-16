@@ -1,46 +1,7 @@
-'use client';
-
-import { useEffect, useState } from "react";
-import { createClient } from "./lib/supabase/client"; // Use client instead of server
-import { useRouter } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  const [user, setUser] = useState<any | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-  const router = useRouter();
-
-  const fetchUser = async () => {
-    const supabase = createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    console.log(user);
-    setUser(user);
-  };
-
-  useEffect(() => {
-    fetchUser();
-
-  }, []);
-
-
-
-  useEffect(() => {
-    if (user) {
-      setIsLoggedIn(true);
-    }
-    else
-      setIsLoggedIn(false);
-
-    console.log("User is ", user);
-
-  }, [user]);
-
-
-
-  const handleSignIn = async () => {
-    router.push('/signin');
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Header */}
@@ -61,7 +22,7 @@ export default function Home() {
             Welcome to <span className="text-blue-600">BuilderAPP</span>
           </h1>
 
-       
+        </div>
 
             {isLoggedIn && (
             <div className="mt-8 bg-white p-8 rounded-2xl shadow-xl">
@@ -86,7 +47,6 @@ export default function Home() {
               </div>
             </div>
           )}
-           </div>
       </main>
 
 

@@ -1,5 +1,5 @@
 
-import { createClient } from "../lib/supabase/client";
+import { supabase } from "../lib/supabase";
 import { useEffect, useState } from 'react';
 
 export default function BuyersPage() {
@@ -7,7 +7,6 @@ export default function BuyersPage() {
 
     useEffect(() => {
         const fetchBuyers = async () => {
-            const supabase = createClient();
             const { data, error } = await supabase.from('buyers').select('*').order('updatedAt', { ascending: false });
             if (!error) setBuyers(data);
             else return;
